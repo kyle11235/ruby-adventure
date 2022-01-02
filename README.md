@@ -100,7 +100,66 @@
         then you can use this prefab to create object has the same settings
         try to change color of this prefab, it changes all related objects in the scene
 
-- world interation
+- World Interactions - Blocking Movement
+
+        - add Rigidbody 2D component to ruby's prefab
+        ruby will fall out of scene
+
+        - set ruby's Gravity Scale property and set it to 0
+        ruby will not fall
+
+        - apply change to all ruby including existing object in scene
+        set ruby's prefab -> ruby gameobject's prefab field -> overrides -> apply to all
+
+        - Collider
+        tell the physics system(Rigidbody 2D component) which part of the GameObject is “solid”
+
+        add Box Collider 2D to ruby's prefab -> the green line around ruby is its physics shape
+
+        - fix ruby's rotate issue
+        ruby's prefab -> Rigidbody 2D component -> constraints -> freeze rotation Z
+
+        - fix ruby's shaking
+        update ruby controller
+
+        Rigidbody2D rigidbody2d
+        Vector2 position = rigidbody2d.position;
+
+        - resize the Collider
+        Edit Collider of metalbox's prefab
+
+        - add Tilemap Collider 2D conponent to tilemap
+        Hierarchy/Grid/tilemap -> add component
+
+        project/assets/art/tiles -> select all tiles except water -> Collider Type -> none, so only water left with collider
+
+        - optimize
+        select Hierarchy/Tilemap -> add component -> Composite Collider 2D (auto add rigid 2d com)
+        In the Tilemap Collider 2D component, enable the Used By Composite checkbox. 
+        In the Rigidbody 2D component, set the Rigidbody Body Type property to Static. 
+
+- World Interactions - Collectibles
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         
 
