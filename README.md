@@ -8,25 +8,25 @@
 - get started
 
         - setup
-        To set up your Unity project:
-        1.  Install Unity 2021.2.7f1c1, if you haven’t already done so.
-        2.  Create a new Unity project using the 2D Template.
-        3.  Go to the 2D Beginner: Tutorial Resources in the Unity Asset Store
+        Install Unity 2021.2.7f1c1
+        Create a new 2D Template project
+
+        - import assets
+        download Tutorial Resources in the Unity Asset Store
         https://assetstore.unity.com/packages/templates/tutorials/2d-beginner-tutorial-resources-140167?_ga=2.137348979.2108523444.1640881014-566125505.1640428876
 
-        4.  Download and import the assets into your Unity project.
-        5.  Install the 2D Tilemap Editor package for your project. 
-        Now you’re ready to get started with the learning project!
+        - Install the 2D Tilemap Editor package
+        window -> package manager
 
         - Creating a new Scene
         use the default sample scene
         or create a new 2D Scene, save as Scenes/MainScene
 
-        - Import Assets into your Project
+        - Import ruby image
         Project/Assets/Art -> Sprites -> import new asset -> select ruby image
 
         - Use a Sprite to create a GameObject
-        click small arrow of Ruby image -> drag into scene
+        click arrow of Ruby image -> drag into scene
 
 - controller
 
@@ -71,7 +71,45 @@
 
 - Decorating the world
 
+        - add 2 metalcube into scene
+        try move ruby
+
+        - draw Sprites based on their position on the y-axis
+        Edit > Project Settings -> Graphics -> Custom Axis -> x=0,y=1,z=0
+
+        try move ruby again
+
+        - Pivot, the point represents a game object
+        set ruby's point from center to Pivot
+        Sprite Sort Point -> pivot
+
+        - change pivot of metalcube/ruby & their game boject
+        Project window, go to Assets > Art > Sprites > Environment
+
+        - Change Pivots Using the Sprite Editor
+        change ruby
+
+        - change by prefabs
+        sprite = class
+        prefab = custom class
+        gameobject = object
+
+        assets > create Prefabs folder
+        Drag the MetalCube GameObject from the Hierarchy to the new Prefab folder.
         
+        then you can use this prefab to create object has the same settings
+        try to change color of this prefab, it changes all related objects in the scene
+
+- world interation
+
+        
+
+
+
+
+
+
+
 
 
 
