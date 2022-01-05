@@ -90,8 +90,8 @@ public class RubyController : MonoBehaviour
         position.y = position.y + speed * vertical * Time.deltaTime;
 
         if(currentHealth == 0){
-            position.x = -11f;
-            position.y = 3f;
+            position.x = -18.42f;
+            position.y = 15.38f;
         }
 
         rigidbody2d.MovePosition(position);

@@ -385,7 +385,7 @@
                 https://learn.unity.com/tutorial/visual-styling-ui-head-up-display?uv=2020.3&projectId=5c6166dbedbc2a0021b1bc7c#5d7f88fcedbc2a001fd3448d
 
                 - adjust for stretch
-                health UI > its child bar/portrait > adjust react tranform arrows > to match part of the parent that it wants to cover
+                health UI > its child bar/portrait > adjust rect tranform arrows > to match part of the parent that it wants to cover
 
 - World Interactions
 
@@ -429,9 +429,9 @@
 
         - build
 
-                edit > project setting > Player
+                edit > project setting > Player > compress option gzip/br/no
                 File > Build Settings
-                File > build & Run > build > save
+                File > build & Run > save as build
 
         - publish webgl
 

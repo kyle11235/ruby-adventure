@@ -7,9 +7,10 @@ using UnityEngine.UI;
 public class UIHealthBar : MonoBehaviour
 {
 
+    // drag object in UI to this field
+    public Image bar;
     public static UIHealthBar instance { get; private set; }
     
-    public Image mask;
     float originalSize;
 
     void Awake()
@@ -19,12 +20,12 @@ public class UIHealthBar : MonoBehaviour
 
     void Start()
     {
-        originalSize = mask.rectTransform.rect.width;
+        originalSize = bar.rectTransform.rect.width;
     }
 
     public void SetValue(float value)
-    {				      
-        mask.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSize * value);
+    {			
+        bar.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, originalSize * value);
     }
 
 
