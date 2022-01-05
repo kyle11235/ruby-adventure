@@ -8,12 +8,12 @@ public class DamageZone : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        RubyController controller = other.GetComponent<RubyController >();
+        RubyController player = other.GetComponent<RubyController >();
 
-        if (controller != null)
+        if (player != null)
         {
-            controller.ChangeHealth(-1);
-            controller.PlaySound(clip);
+            player.ChangeHealth(-1);
+            player.PlaySound(clip);
         }
     }
 

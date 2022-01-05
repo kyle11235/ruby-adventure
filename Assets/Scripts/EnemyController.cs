@@ -99,6 +99,8 @@ public class EnemyController : MonoBehaviour
         {
             particles.Stop();
             audioSource.Stop();
+
+            audioSource.volume = 1.0f;
             PlaySound(fixedSound);
         }
 

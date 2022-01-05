@@ -7,7 +7,7 @@
 
 - get started
 
-        - setup
+        - create project
         
                 Install Unity 2021.2.7f1c1
                 Create a new 2D Template project
@@ -36,7 +36,7 @@
         
                 click arrow of Ruby image > drag into scene, it creates a GameObject in the scene
 
-- controller / frame rate
+- controller / frame rate / script c#
 
         - create script
         
@@ -93,8 +93,8 @@
 
         - Pivot, the point represents a game object
        
-                set ruby's point from center to Pivot
-                Sprite Sort Point > pivot
+                1. set ruby's prefab's Pivot point from center to Bottom
+                2. gameboject > Sprite Sort Point > pivot > apply override to prefab
 
                 change Pivots Using the Sprite Editor
                 change pivot of metalcube/ruby & their game boject
@@ -115,7 +115,7 @@
 
         - Gravity
         
-                add Rigidbody 2D component to ruby's prefab
+                add Rigidbody2D component to ruby's prefab
                 ruby will fall out of scene
 
                 set ruby's Gravity Scale property and set it to 0
@@ -126,11 +126,11 @@
 
         - Collider
         
-                tell the physics system(Rigidbody 2D component) which part of the GameObject is “solid”
-                add Box Collider 2D to ruby's prefab > the green line around ruby is its physics shape
+                tell the physics system(Rigidbody2D component) which part of the GameObject is “solid”
+                add BoxCollider2D to ruby's prefab > the green line around ruby is its physics shape
 
                 - fix ruby's rotate issue
-                ruby's prefab > Rigidbody 2D component > constraints > freeze rotation Z
+                ruby's prefab > Rigidbody2D component > constraints > freeze rotation Z
 
                 - fix ruby's shaking
                 update ruby controller
@@ -146,9 +146,9 @@
                 - optimize
                 select Hierarchy/Tilemap > add component > Composite Collider 2D (auto add rigid 2d com)
                 In the Tilemap Collider 2D component, enable the Used By Composite checkbox. 
-                In the Rigidbody 2D component, set the Rigidbody Body Type property to Static. 
+                In the Rigidbody2D component, set the Rigidbody Body Type property to Static. 
 
-- World Interactions - Collectibles
+- World Interactions - Collectibles, + health value
 
         - Trigger
         
@@ -160,21 +160,26 @@
 
                 - add Collectible object
                 project/assets/art/sprites/VFX/CollectibleHealth > drag into scene
-                add Box Collider 2D to the gameobject
+                add BoxCollider2D to the gameobject
                 set Is Trigger, so that ruby can go through it
 
                 - handle event
                 assets/scripts create c# HealthCollectible
                 add to CollectibleHealth gameobject
 
-- World Interactions - Damage Zones and Enemies
+- World Interactions - Damage Zones and Enemies, - health value
 
         - damage zone
         
                 Assets/Art/Sprites/Environment/Damageable, add into scene
-                add Box Collider 2D
+                add BoxCollider2D
                 Is Trigger
                 c# DamageZone
+
+                - quick way to create larger damage zone, instead of copy paste
+                prefab > Sprite Renderer component > Draw Mode to Tiled > Tile Mode to Adaptive
+                sprite > Mesh Type to Full Rect
+                now you can use Rect tool to create larger damage zone
 
         - enemy
         
@@ -229,7 +234,7 @@
                 arrow between Idle/Moving/Hit means transition, it works upon its conditions(param value)
                 update those params in ruby's controller e.g. animator.Setxxx
 
-- World Interactions - weapon
+- World Interactions - bullet
 
         - create gameobject
         
@@ -264,18 +269,37 @@
                 
                         install Cinemachine
 
-                - create virtual camera
+                - virtual camera
                 
                         the main camera will copy your VC's settings
+                        Cinemachine > create 2D camera
+                        follow > ruby
 
                 - Orthographic
                 
                         relate to perspective view, Orthographic display object in fixed size
                         set VC's Orthographic size to 5, so display 10 units in height
 
-                - follow ruby object
+                        camera object > lens > ortho size > 5
+                        check game view
 
-- Visual Styling, Particles
+                - restrict camera view within map
+
+                        camera object > extension > CinemachineConfiner
+                        hierarchy > Create Empty name 'confiner' > add component  > Polygon Collider 2D > Edit Collider > drag to cover the map
+                        camera object > CinemachineConfiner > select the confiner object
+
+                        - error
+
+                                now ruby will be out of view
+
+                        - fix
+
+                                right up corner > layer > confiner layer
+                                confiner object > select confiner layer
+                                Edit > Project Settings > Physics 2D > uncheck confier's conflict with other layers
+
+- Visual Styling - Particles/effect
 
         - Particles
         
@@ -303,6 +327,9 @@
                 enable Size over lifetime
                 change to high to low
 
+                - sorting layer
+                renderer section > ordery in layer from 0 to 1
+
         - add effect to bot
         
                 drag smokeEffect object to create prefab, delete the object from scene
@@ -326,11 +353,10 @@
 
         - Instantiating a Particle System
         
-                you can store a reference to the Prefab in a public variable,
-                and call Instantiate when it should happen.
-                        If the Particle System is not Looping and Stop Action is set to Destroy
+                smoke effect > prefab > create by code
+                you can store a reference to the Prefab in a public variable > call Instantiate when it should happen.
 
-- Visual Styling
+- Visual Styling - UI
 
         - Head-Up Display
         
@@ -358,6 +384,9 @@
                 - too much details
                 https://learn.unity.com/tutorial/visual-styling-ui-head-up-display?uv=2020.3&projectId=5c6166dbedbc2a0021b1bc7c#5d7f88fcedbc2a001fd3448d
 
+                - adjust for stretch
+                health UI > its child bar/portrait > adjust react tranform arrows > to match part of the parent that it wants to cover
+
 - World Interactions
 
         - Dialog Raycast
@@ -365,18 +394,22 @@
 - Audio
 
         - Audio Clips
-        sound
+        
+                sound
 
         - Audio Listener 
-        where to listen the sound
+        
+                where to listen the sound
         
         - Audio Source
-        component play the sound
+        
+                component play the sound
 
         - create BGM
-        create audio source
-        set AudioClip
-        set loop
+        
+                create audio source
+                set AudioClip
+                set loop
 
         - control one time sound
         
@@ -394,7 +427,21 @@
 
 - build, run, distribute
 
-        ...
+        - build
+
+                edit > project setting > Player
+                File > Build Settings
+                File > build & Run > build > save
+
+        - publish webgl
+
+                https://play.unity.com/
+                zip ./build
+                upload build.zip
+
+
+
+
 
 
 
