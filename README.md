@@ -101,8 +101,8 @@
                 Project window, Assets/Art/Sprites/Environment
 
                 change by prefabs
-                sprite = class
-                prefab = custom class
+                sprite = image
+                prefab = class
                 gameobject = object
 
                 assets > create Prefabs folder
