@@ -3,19 +3,19 @@
 
 - guide
 
-        https://learn.unity.com/project/ruby-s-2d-rpg
+        https://learn.unity.com/project/ruby-s-2d-rpg (unity editor 2020.3, but error)
 
 - get started
 
-        - create project
-        
-                Install Unity 2021.2.7f1c1
-                Create a new 2D Template project
+        - Install Unity editor 2021.2.7f1c1
 
-        - Asset Store
+        - create new 2D Template project
+
+        - import assets
         
-                download Tutorial Resources in the Unity Asset Store & import assets
                 https://assetstore.unity.com/packages/templates/tutorials/2d-beginner-tutorial-resources-140167?_ga=2.137348979.2108523444.1640881014-566125505.1640428876
+
+                add to my asset > open in unity (open in the project's package manager) > download > import
 
         - Package manager
         
